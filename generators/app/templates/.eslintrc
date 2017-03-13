@@ -1,0 +1,15 @@
+{
+    "extends": "xo",
+    "env": {
+        "browser": true
+    },
+    "rules": {
+        "compat/compat": 2,
+        "indent": ["error", 4, {
+            "SwitchCase": 1
+        }]
+    },
+    "plugins": [
+        "compat"
+    ]
+}

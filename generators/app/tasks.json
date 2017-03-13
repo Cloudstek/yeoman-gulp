@@ -1,0 +1,67 @@
+{
+  "assets": {
+    "default": true,
+    "task": "build",
+    "npm": [
+      "merge-stream"
+    ]
+  },
+  "babel": {
+    "default": true,
+    "task": "build",
+    "npm": [
+      "gulp-babel",
+      "browserslist",
+      "babel-plugin-transform-class-properties",
+      "babel-plugin-transform-runtime",
+      "babel-preset-env"
+    ]
+  },
+  "browsersync": {
+    "default": false,
+    "task": "default",
+    "npm": [
+      "browser-sync"
+    ]
+  },
+  "clean": {
+    "default": true,
+    "npm": [
+      "gulp-util",
+      "del"
+    ]
+  },
+  "eslint": {
+    "default": true,
+    "task": "build",
+    "npm": [
+      "eslint",
+      "eslint-config-xo",
+      "eslint-formatter-pretty",
+      "eslint-plugin-compat",
+      "gulp-eslint"
+    ]
+  },
+  "images": {
+    "default": true,
+    "task": "build",
+    "npm": [
+      "gulp-imagemin"
+    ]
+  },
+  "less": {
+    "default": true,
+    "task": "build",
+    "npm": [
+      "gulp-less",
+      "gulp-autoprefixer",
+      "gulp-clean-css",
+      "gulp-sourcemaps"
+    ]
+  },
+  "watch": {
+    "default": true,
+    "task": "default",
+    "npm": []
+  }
+}

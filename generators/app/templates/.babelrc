@@ -1,0 +1,15 @@
+{
+  "comments": false,
+  "compact": true,
+  "plugins": [
+    "transform-class-properties",
+    "transform-runtime"
+  ],
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": []
+      }
+    }]
+  ]
+}

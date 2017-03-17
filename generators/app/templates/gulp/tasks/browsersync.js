@@ -1,16 +1,14 @@
-const pkg = require('../../package.json');
+const readPkg = require('read-pkg');
 const sync = require('browser-sync');
 
-var task = function () {
-    // Load options from package.json "browserSync"
-    var options = pkg.browserSync === undefined ? {} : pkg.browserSync;
+var task = function (done) {
+    readPkg().then(pkg => {
+        // Load options from package.json "browserSync"
+        let options = pkg.browserSync || {};
 
-    // Init browser-sync
-    sync.init(options);
+        // Init browser-sync
+        sync.init(options);
+    });
 };
 
-<% if (tasks.indexOf('less') >= 0) { -%>
-module.exports = [['less'], task];
-<% } else { -%>
-module.exports = task;
-<% } -%>
+module.exports = [['build'], task];

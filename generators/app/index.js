@@ -185,7 +185,7 @@ class GulpNodeGenerator extends Generator {
             this.npmDeps.push('flow-bin');
 
             this.fs.copy(
-                this.templatePath('.flowconfig'),
+                this.templatePath('flowconfig'),
                 this.destinationPath('.flowconfig')
             );
         }
@@ -195,7 +195,7 @@ class GulpNodeGenerator extends Generator {
             this.selectedTasks.push('babel');
 
             // Babel config
-            let babelrc = this.fs.readJSON(this.templatePath('.babelrc'));
+            let babelrc = this.fs.readJSON(this.templatePath('babelrc.json'));
             babelrc.presets = babelrc.presets || [];
 
             // NodeJS target
@@ -238,7 +238,7 @@ class GulpNodeGenerator extends Generator {
             this.selectedTasks.push('eslint');
 
             // ESLint config
-            let eslintrc = this.fs.readJSON(this.templatePath('.eslintrc'));
+            let eslintrc = this.fs.readJSON(this.templatePath('eslintrc.json'));
 
             eslintrc.env = eslintrc.env || {};
             eslintrc.plugins = eslintrc.plugins || [];
@@ -310,18 +310,20 @@ class GulpNodeGenerator extends Generator {
     install() {
         // Add NPM deps for selected tasks
         for (let task of this.selectedTasks.concat(this.bgTasks)) {
-            if (this.gulpTasks[task].npm && Array.isArray(this.gulpTasks[task].npm)) {
-                this.npmDeps.push(...this.gulpTasks[task].npm);
-            }
+            if (this.gulpTasks[task]) {
+                if (this.gulpTasks[task].npm && Array.isArray(this.gulpTasks[task].npm)) {
+                    this.npmDeps.push(...this.gulpTasks[task].npm);
+                }
 
-            // Web specific deps
-            if (this.answers.env === 'web' && this.gulpTasks[task].web && Array.isArray(this.gulpTasks[task].web)) {
-                this.npmDeps.push(...this.gulpTasks[task].web);
-            }
+                // Web specific deps
+                if (this.answers.env === 'web' && this.gulpTasks[task].web && Array.isArray(this.gulpTasks[task].web)) {
+                    this.npmDeps.push(...this.gulpTasks[task].web);
+                }
 
-            // NodeJS specific deps
-            if (this.answers.env === 'node' && this.gulpTasks[task].node && Array.isArray(this.gulpTasks[task].node)) {
-                this.npmDeps.push(...this.gulpTasks[task].node);
+                // NodeJS specific deps
+                if (this.answers.env === 'node' && this.gulpTasks[task].node && Array.isArray(this.gulpTasks[task].node)) {
+                    this.npmDeps.push(...this.gulpTasks[task].node);
+                }
             }
         }
 

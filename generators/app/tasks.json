@@ -7,14 +7,20 @@
       "babel-preset-env"
     ],
     "web": [
-      "browserslist"
+      "ai/browserslist"
     ]
   },
   "browsersync": {
-    "gulp": "default",
     "npm": [
       "read-pkg",
       "browser-sync"
+    ]
+  },
+  "css": {
+    "npm": [
+      "gulp-autoprefixer",
+      "gulp-clean-css",
+      "gulp-sourcemaps"
     ]
   },
   "eslint": {
@@ -34,6 +40,14 @@
   "less": {
     "npm": [
       "gulp-less",
+      "gulp-autoprefixer",
+      "gulp-clean-css",
+      "gulp-sourcemaps"
+    ]
+  },
+  "sass": {
+    "npm": [
+      "gulp-sass",
       "gulp-autoprefixer",
       "gulp-clean-css",
       "gulp-sourcemaps"

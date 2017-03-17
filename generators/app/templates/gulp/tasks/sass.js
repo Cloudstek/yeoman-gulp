@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const less = require('gulp-less');
+const sass = require('gulp-sass');
 const prefix = require('gulp-autoprefixer');
 const compress = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
@@ -11,9 +11,9 @@ const sync = require('browser-sync');
 var task = function () {
     const cwd = process.cwd();
 
-    return gulp.src(['<%= src.css %>/**/*.less', '!<%= src.css %>/**/_*.less'])
+    return gulp.src(['<%= src.css %>/**/*.scss', '!<%= src.css %>/**/_*.scss'])
         .pipe(sourcemaps.init())
-        .pipe(less())
+        .pipe(sass().on('error', sass.logError))
         .pipe(prefix())
         .pipe(compress())
         .pipe(sourcemaps.write())

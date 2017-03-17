@@ -1,39 +1,29 @@
 {
-  "assets": {
-    "default": true,
-    "task": "build",
-    "npm": [
-      "merge-stream"
-    ]
-  },
   "babel": {
-    "default": true,
-    "task": "build",
     "npm": [
       "gulp-babel",
-      "browserslist",
       "babel-plugin-transform-class-properties",
       "babel-plugin-transform-runtime",
       "babel-preset-env"
+    ],
+    "web": [
+      "ai/browserslist"
     ]
   },
   "browsersync": {
-    "default": false,
-    "task": "default",
     "npm": [
+      "read-pkg",
       "browser-sync"
     ]
   },
-  "clean": {
-    "default": true,
+  "css": {
     "npm": [
-      "gulp-util",
-      "del"
+      "gulp-autoprefixer",
+      "gulp-clean-css",
+      "gulp-sourcemaps"
     ]
   },
   "eslint": {
-    "default": true,
-    "task": "build",
     "npm": [
       "eslint",
       "eslint-config-xo",
@@ -43,15 +33,11 @@
     ]
   },
   "images": {
-    "default": true,
-    "task": "build",
     "npm": [
       "gulp-imagemin"
     ]
   },
   "less": {
-    "default": true,
-    "task": "build",
     "npm": [
       "gulp-less",
       "gulp-autoprefixer",
@@ -59,9 +45,27 @@
       "gulp-sourcemaps"
     ]
   },
+  "sass": {
+    "npm": [
+      "gulp-sass",
+      "gulp-autoprefixer",
+      "gulp-clean-css",
+      "gulp-sourcemaps"
+    ]
+  },
+  "typescript": {
+    "npm": [
+      "typescript",
+      "gulp-typescript"
+    ]
+  },
+  "tslint": {
+    "npm": [
+      "tslint",
+      "gulp-tslint"
+    ]
+  },
   "watch": {
-    "default": true,
-    "task": "default",
     "npm": []
   }
 }

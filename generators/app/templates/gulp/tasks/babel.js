@@ -1,11 +1,15 @@
 const fs = require('fs');
 const gulp = require('gulp');
 const babel = require('gulp-babel');
+const rename = require('gulp-rename');
+<% if (env === 'web') { -%>
 const browserslist = require('browserslist');
+<% } -%>
 
 var task = function () {
     let babelrc = JSON.parse(fs.readFileSync('.babelrc') || "{}");
 
+<% if (env === 'web') { -%>
     // Add browsers from browserslist
     babelrc.presets.map(preset => {
         const [name, options] = preset;
@@ -18,10 +22,15 @@ var task = function () {
 
         return preset;
     });
+<% } -%>
 
-    return gulp.src(['src/js/**/*.js'])
+    return gulp.src(['<%= src.js %>/**/*<%= flavourExt %>', '!node_modules', '!node_modules/**'])
         .pipe(babel(babelrc))
-        .pipe(gulp.dest('assets/js'));
+        .pipe(rename(path => {
+            // Fix file extension for double ext files (.js.flow)
+            path.extname = path.basename.endsWith('.js') ? '' : '.js';
+        }))
+        .pipe(gulp.dest('<%= dest.js %>'));
 };
 
 <% if (tasks.indexOf('eslint') >= 0) { -%>

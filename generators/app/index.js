@@ -329,6 +329,11 @@ class GulpNodeGenerator extends Generator {
 
         // NPM
         this.npmInstall(this.npmDeps, {'save-dev': true});
+
+        // Babel runtime
+        if (this.selectedTasks.indexOf('babel') >= 0) {
+            this.npmInstall('babel-runtime');
+        }
     }
 }
 

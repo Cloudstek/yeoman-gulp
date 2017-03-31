@@ -13,7 +13,12 @@ var task = function () {
 
     return gulp.src(['<%= src.css %>/**/*.scss', '!<%= src.css %>/**/_*.scss'])
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({
+            includePaths: [
+                '<%= src.css %>',
+                'bower_components'
+            ]
+        }).on('error', sass.logError))
         .pipe(prefix())
         .pipe(compress())
         .pipe(sourcemaps.write())

@@ -13,7 +13,12 @@ var task = function () {
 
     return gulp.src(['<%= src.css %>/**/*.less', '!<%= src.css %>/**/_*.less'])
         .pipe(sourcemaps.init())
-        .pipe(less())
+        .pipe(less({
+            paths: [
+                '<%= src.css %>',
+                'bower_components'
+            ]
+        }))
         .pipe(prefix())
         .pipe(compress())
         .pipe(sourcemaps.write())
